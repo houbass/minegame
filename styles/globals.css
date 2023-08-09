@@ -1,0 +1,147 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+:root{
+  background: rgb(69, 48, 48);
+}
+
+p, h1, h2, h3 {
+  pointer-events: none;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gamefield {
+  position: relative;
+}
+
+.nugget {
+  cursor: pointer;
+  filter: contrast(1);
+}
+
+.nugget:hover{
+  transition: 0.5s;
+  scale: 1.1;
+  filter: contrast(2);
+}
+
+.nuggetanimation {
+  animation-name: digging;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@keyframes digging {
+  from{
+    scale: 0.9;
+    filter: contrast(0.5);
+  }
+  to{
+    scale: 1.1;
+    filter: contrast(3);
+  }
+  
+}
+
+.textPath {
+  stroke: rgb(204, 202, 202);
+  font-size: 150px;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+}
+
+
+@keyframes dash {
+
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to{
+    stroke-dashoffset: 0;
+  }
+}
+
+.menucard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 90%;
+
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' bold,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+.resetbtn {
+  margin-right: 10px;
+  padding: 3px 5px; 
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 35px;
+  
+}
+
+.resetbtn:hover{
+  scale: 1.1;
+  animation: reset 1s forwards;
+}
+
+@keyframes reset {
+  from{
+    rotate: 0deg;
+  }
+  to{
+    rotate: -360deg;
+  }
+  
+}
+
+.errtext {
+  position: absolute;
+  z-index: 10;
+  color: rgb(5, 5, 5);
+  font-Weight: bold;
+  background: rgba(248, 83, 83, 0.9);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.animateErr {
+  animation: errAnimation 2s forwards;
+}
+
+@keyframes errAnimation {
+  0%{
+    opacity: 0;
+  }
+  20%{
+    opacity: 1;
+  }
+  80%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
