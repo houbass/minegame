@@ -313,6 +313,7 @@ export default function GameField({ goldNuggets, setGoldNuggets, gold, setGold, 
 
                         return(
                             <line  
+                                key={item.index}
                                 className="textPath" 
                                 style={{
                                     strokeDashoffset: percentage
