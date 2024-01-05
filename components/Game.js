@@ -5,7 +5,7 @@ import useLocalStorageState from 'use-local-storage-state'
 
 //components
 import GameField from "./GameField";
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 //pic
 import bitcoin from "pic/bitcoin.svg"
@@ -105,7 +105,7 @@ export default function Game() {
     }
 
     //GLOBAL INTERVAL
-    useLayoutEffect(() => {
+    useEffect(() => {
         const counting = setInterval(() => {
             setCount(Date.now());
         }, 40);
@@ -115,13 +115,12 @@ export default function Game() {
         }
     }, [])
     
-    useLayoutEffect(() => {
+    useEffect(() => {
         setScore(gold - costs);
 
     })
 
     function resizeFun() {
-        console.log("RESIZING")
 
         const windowWidth = window.innerWidth;
 
@@ -134,7 +133,7 @@ export default function Game() {
         }
 
     }
-    useLayoutEffect(() => {
+    useEffect(() => {
 
         window.addEventListener("resize", resizeFun);
         resizeFun();

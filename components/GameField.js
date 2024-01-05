@@ -1,5 +1,6 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+
 import Image from "next/image";
+
 
 //pic
 import bitcoin from "pic/bitcoin.svg";
@@ -7,11 +8,10 @@ import mine from "pic/mine.svg";
 import ground from "pic/ground.svg";
 
 
+
 export default function GameField({ goldNuggets, setGoldNuggets, gold, setGold, beginDiggingPath, diggingPaths, setDiggingPaths, fieldWidth, costs, setCosts, fieldScale, topOffset }) {
 
-    const [errCoordinates, setErrCoordinates] = useState({});
-    const [errText, setErrText] = useState("");
-    const [errClass, setErrClass] = useState("0");
+
     //page size settings
     const maxTop = goldNuggets.map((item) => item.top)
     const fieldHeight = Math.max(...maxTop) + 300;
@@ -22,6 +22,7 @@ export default function GameField({ goldNuggets, setGoldNuggets, gold, setGold, 
         return min + (Math.random() * (max - min))
     }
 
+    
 
     function errtextFun(text, left, top) {
         const errElement = document.createElement("p");
@@ -76,8 +77,6 @@ export default function GameField({ goldNuggets, setGoldNuggets, gold, setGold, 
                 const nearestX = finishedPaths[nearestPathIndex].x2
                 const nearestY = finishedPaths[nearestPathIndex].y2
 
-                console.log(costs + Math.min(...lengths))
-                console.log(gold)
                 if((costs + Math.min(...lengths)) < gold){
 
                     //costs
@@ -226,16 +225,14 @@ export default function GameField({ goldNuggets, setGoldNuggets, gold, setGold, 
                 alignItems: "flex-end",
                 justifyContent: "center"
             }}>
-                <Image 
+                <Image
                 width={300} 
-                src={mine} 
+                src={mine}  
                 style={{
-                    //marginTop: "152px",
-                    //background: "orange",
                     paddingRight: "50px"
-                    
-                    
-                }}/>
+                }}
+                alt="mining tower" 
+                />
             </div>
             <div 
 
@@ -282,7 +279,7 @@ export default function GameField({ goldNuggets, setGoldNuggets, gold, setGold, 
                                 zIndex: "5"
                             }}
                             >
-                                <Image className={"nugget" + " " + diggingClass} width={item.size} src={bitcoin}></Image>
+                                <Image className={"nugget" + " " + diggingClass} width={item.size} src={bitcoin} alt="bitcoin" loading="lazy" />
                                 <p style={{color: "white"}}>{percentage}%</p>
                             </div>
                     )
